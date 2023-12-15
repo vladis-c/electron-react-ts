@@ -19,7 +19,23 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   // mainWindow.webContents.openDevTools();
 };
-app.on('ready', createWindow);
+
+const createSecondWindow = () => {
+  const win = new BrowserWindow({
+    height: 600,
+    width: 800,
+    webPreferences: {
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+    },
+  });
+  win.loadFile('second.html');
+};
+
+app.on('ready', () => {
+  createWindow();
+  createSecondWindow();
+  menu();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -32,5 +48,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-menu();

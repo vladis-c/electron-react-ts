@@ -1,10 +1,10 @@
-import {app, Menu, shell} from 'electron';
+import {app, dialog, Menu, shell} from 'electron';
 
 const menuTemplate: (
   | Electron.MenuItemConstructorOptions
   | Electron.MenuItem
 )[] = [
-  {label: app.name, submenu: [{label: 'About'}]},
+  {label: app.name ?? 'Menu', submenu: [{label: 'About'}]},
   {
     label: 'File',
     submenu: [
@@ -13,6 +13,16 @@ const menuTemplate: (
         click: async () => await shell.openExternal('https://google.com'),
       },
       {type: 'separator'},
+      {
+        label: 'Info',
+        click: (_, focused) =>
+          dialog.showMessageBox(focused, {
+            type: 'info',
+            title: 'Application Menu Demo',
+            buttons: ['Ok', 'Cancel'],
+            message: 'This is the message of this amazing app',
+          }),
+      },
       {label: 'Exit', click: app.quit},
     ],
   },
