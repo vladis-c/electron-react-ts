@@ -20,20 +20,8 @@ const createWindow = () => {
   // mainWindow.webContents.openDevTools();
 };
 
-const createSecondWindow = () => {
-  const win = new BrowserWindow({
-    height: 600,
-    width: 800,
-    webPreferences: {
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-    },
-  });
-  win.loadFile('second.html');
-};
-
 app.on('ready', () => {
   createWindow();
-  createSecondWindow();
   menu();
 });
 
