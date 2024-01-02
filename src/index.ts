@@ -1,6 +1,7 @@
 import {app, BrowserWindow} from 'electron';
 import menu from './menu';
 import tray from './tray';
+import splash from './splash';
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
@@ -22,6 +23,7 @@ const createWindow = () => {
 };
 
 app.on('ready', () => {
+  splash();
   createWindow();
   menu();
   tray();
