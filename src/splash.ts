@@ -13,7 +13,7 @@ const splash = () => {
       contextIsolation: true,
     },
   });
-  splashWindow.loadFile('index.html');
+  splashWindow.loadFile('./src/index.html');
 };
 
 export default splash;

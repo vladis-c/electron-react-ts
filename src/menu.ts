@@ -9,10 +9,6 @@ const menuTemplate: (
     label: 'File',
     submenu: [
       {
-        label: 'Map',
-        click: async () => undefined,
-      },
-      {
         label: 'Learn more',
         click: async () => await shell.openExternal('https://google.com'),
       },
