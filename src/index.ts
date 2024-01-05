@@ -12,10 +12,13 @@ if (require('electron-squirrel-startup')) {
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    height: 1600,
+    width: 1800,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      nodeIntegration: true,
+      contextIsolation: false,
+      webSecurity: false
     },
   });
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
